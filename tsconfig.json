@@ -15,7 +15,7 @@
     "jsx": "react-jsx",
 
     /* Linting */
-"typeRoots": ["./node_modules/@types", "./types", "src/assets/"],
+		"typeRoots": ["./node_modules/@types", "./types", "src/assets/"],
 
  /* https://github.com/tsconfig/bases/blob/main/bases/strictest.json */
     "strict": true,
@@ -40,6 +40,6 @@
 	},
 
 		"allowJs": true,
-"include": ["./types/**/*.d.ts", "./src/**/*", "./assets/**/*"],
+"include": ["./types/**/*.d.ts", "./**/*", "./assets/**/*"],
 "references": [{ "path": "./tsconfig.node.json" }]
 }
