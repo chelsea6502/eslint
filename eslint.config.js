@@ -5,11 +5,11 @@ import ts from "typescript-eslint";
 import react from "eslint-plugin-react/configs/all.js";
 import globals from "globals";
 /*
- * Future plugins:
- * promises?
- * next.js? graphql?
- * tailwind?
- * react-testing-library?
+ * Future flat config plugins:
+ * promises
+ * next.js
+ * tailwind
+ * react-testing-library
  * total-functions
  */
 
