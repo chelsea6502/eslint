@@ -3,7 +3,7 @@ import fn from "eslint-plugin-functional/flat";
 import ts from "typescript-eslint";
 import react from "eslint-plugin-react/configs/all.js";
 import globals from "globals";
-// typed-fp
+// total-functions
 // promises?
 // next.js? graphql?
 // tailwind?
@@ -25,7 +25,25 @@ export default ts.config(
     },
     settings: { react: { version: "detect" } },
     rules: {
-      "functional/prefer-immutable-types": "off",
+      "@typescript-eslint/consistent-type-assertions": [
+        "error",
+        { assertionStyle: "never" },
+      ],
+      "@typescript-eslint/strict-boolean-expressions": [
+        "error",
+        { allowString: false, allowNumber: false, allowNullableObject: false },
+      ],
+      "@typescript-eslint/ban-types": [
+        "error",
+        {
+          types: {
+            Omit: { message: "Omit is not type-safe." },
+            Exclude: { message: "Exclude is not type-safe." },
+            Extract: { message: "Extract is not type-safe." },
+          },
+        },
+      ],
+      "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     },
   },
 );
