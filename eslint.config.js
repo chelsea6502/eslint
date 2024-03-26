@@ -21,6 +21,7 @@ export default ts.config(
       },
       globals: { ...globals.browser },
     },
+    settings: { react: { version: "detect" } },
     rules: {
       "functional/prefer-immutable-types": "off",
     },
