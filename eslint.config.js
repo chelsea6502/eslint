@@ -3,9 +3,11 @@ import fn from "eslint-plugin-functional/flat";
 import ts from "typescript-eslint";
 import react from "eslint-plugin-react/configs/all.js";
 import globals from "globals";
-// react-perf
-// total-functions
 // typed-fp
+// promises?
+// next.js? graphql?
+// tailwind?
+// react-testing-library?
 
 export default ts.config(
   js.configs.all,
