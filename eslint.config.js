@@ -10,12 +10,19 @@ import globals from "globals";
 export default ts.config(
   js.configs.all,
   fn.configs.all,
+  react,
   ...ts.configs.strictTypeChecked,
-  ...react,
   {
     languageOptions: {
       ...react.languageOptions,
+      parserOptions: {
+        project: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
       globals: { ...globals.browser },
+    },
+    rules: {
+      "functional/prefer-immutable-types": "off",
     },
   },
 );
