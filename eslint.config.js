@@ -6,11 +6,11 @@ import react from "eslint-plugin-react/configs/all.js";
 import globals from "globals";
 /*
  * Future plugins:
- * total-functions
  * promises?
  * next.js? graphql?
  * tailwind?
  * react-testing-library?
+ * total-functions
  */
 
 export default ts.config(
