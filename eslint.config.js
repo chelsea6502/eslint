@@ -39,6 +39,7 @@ export default ts.config(
     },
     settings: { react: { version: "detect" } },
     rules: {
+      // Custom rules from the 'typed-fp' plugin
       "@typescript-eslint/consistent-type-assertions": [
         "error",
         { assertionStyle: "never" },
@@ -58,12 +59,13 @@ export default ts.config(
         },
       ],
       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+
       // TypeScript-specific rules
       "@typescript-eslint/explicit-function-return-type": "warn",
       "@typescript-eslint/explicit-module-boundary-types": "warn",
-      "@typescript-eslint/prefer-readonly-parameter-types": "off",
       "@typescript-eslint/consistent-type-imports": "warn",
       "@typescript-eslint/max-params": "warn",
+      "@typescript-eslint/prefer-readonly-parameter-types": "off",
       "@typescript-eslint/sort-type-constituents": "off",
       "@typescript-eslint/naming-convention": "off",
       "@typescript-eslint/no-magic-numbers": "off",
