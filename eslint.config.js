@@ -3,14 +3,14 @@ import fn from "eslint-plugin-functional/flat";
 import ts from "typescript-eslint";
 import jsdoc from "eslint-plugin-jsdoc";
 import globals from "globals";
-// import reactRecommended from "eslint-plugin-react/configs/all.js";
+// TODO: react
+// TODO: nextjs
 
 export default ts.config(
   js.configs.all,
   fn.configs.all,
   ...ts.configs.strictTypeChecked,
   jsdoc.configs["flat/recommended"],
-  // reactRecommended,
   {
     languageOptions: {
       parserOptions: {
