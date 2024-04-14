@@ -2,7 +2,7 @@ import js from "@eslint/js";
 import fn from "eslint-plugin-functional/flat";
 import ts from "typescript-eslint";
 import globals from "globals";
-import react from "eslint-plugin-react";
+// @ts-expect-error: React plugin isn't typed
 import reactConfig from "eslint-plugin-react/configs/all.js";
 // TODO: nextjs
 
@@ -10,10 +10,13 @@ export default ts.config(
   js.configs.all,
   fn.configs.all,
   ...ts.configs.strictTypeChecked,
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   {
     files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
     ...reactConfig,
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     languageOptions: {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       ...reactConfig.languageOptions,
       globals: {
         ...globals.serviceworker,
@@ -32,8 +35,14 @@ export default ts.config(
     },
     rules: {
       "react/jsx-indent": "off",
+      "react/jsx-filename-extension": [
+        "off",
+        {
+          extensions: [".tsx"],
+        },
+      ],
 
-      // incompatible react plugins
+      // Incompatible react plugins
       "react/require-render-return": "off",
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off",
