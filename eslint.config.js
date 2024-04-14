@@ -1,16 +1,27 @@
 import js from "@eslint/js";
 import fn from "eslint-plugin-functional/flat";
 import ts from "typescript-eslint";
-import jsdoc from "eslint-plugin-jsdoc";
 import globals from "globals";
-// TODO: react
+import react from "eslint-plugin-react";
+import reactConfig from "eslint-plugin-react/configs/all.js";
 // TODO: nextjs
 
 export default ts.config(
   js.configs.all,
   fn.configs.all,
   ...ts.configs.strictTypeChecked,
-  jsdoc.configs["flat/recommended"],
+  {
+    files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
+    ...reactConfig,
+    languageOptions: {
+      ...reactConfig.languageOptions,
+      globals: {
+        ...globals.serviceworker,
+        ...globals.browser,
+      },
+    },
+    settings: { react: { version: "detect" } },
+  },
   {
     languageOptions: {
       parserOptions: {
@@ -20,6 +31,41 @@ export default ts.config(
       globals: { ...globals.browser },
     },
     rules: {
+      "react/jsx-indent": "off",
+
+      // incompatible react plugins
+      "react/require-render-return": "off",
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off",
+      "react/no-string-refs": "off",
+      "react/display-name": "off",
+      "react/no-direct-mutation-state": "off",
+      "react/prop-types": "off",
+      "react/destructuring-assignment": "off",
+      "react/jsx-no-bind": "off",
+      "react/no-access-state-in-setstate": "off",
+      "react/no-unstable-nested-components": "off",
+      "react/require-optimization": "off",
+      "react/boolean-prop-naming": "off",
+      "react/prefer-stateless-function": "off",
+      "react/jsx-fragments": "off",
+      "react/default-props-match-prop-types": "off",
+      "react/function-component-definition": "off",
+      "react/hook-use-state": "off",
+      "react/jsx-no-constructed-context-values": "off",
+      "react/no-arrow-function-lifecycle": "off",
+      "react/no-multi-comp": "off",
+      "react/no-set-state": "off",
+      "react/no-this-in-sfc": "off",
+      "react/no-typos": "off",
+      "react/no-unused-prop-types": "off",
+      "react/no-object-type-as-default-prop": "off",
+      "react/prefer-exact-props": "off",
+      "react/prefer-read-only-props": "off",
+      "react/require-default-props": "off",
+      "react/sort-comp": "off",
+      "react/static-property-placement": "off",
+
       // Custom rule configs from the 'typed-fp' plugin
       "@typescript-eslint/consistent-type-assertions": [
         "error",
