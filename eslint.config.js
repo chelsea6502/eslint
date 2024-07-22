@@ -3,15 +3,13 @@ import fn from "eslint-plugin-functional/flat";
 import ts from "typescript-eslint";
 import globals from "globals";
 import react from "@eslint-react/eslint-plugin";
+// TODO: nextjs
 
 export default ts.config(
   js.configs.all,
   fn.configs.all,
   ...ts.configs.strictTypeChecked,
-  {
-    files: ["**/*.{ts,tsx}"],
-    ...react.configs["recommended-type-checked"],
-  },
+  { files: ["**/*.{ts,tsx}"], ...react.configs["recommended-type-checked"] },
   { files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"] },
   {
     languageOptions: {
@@ -19,9 +17,6 @@ export default ts.config(
       globals: { ...globals.browser },
     },
     rules: {
-      "react/jsx-indent": "off",
-      "react/jsx-filename-extension": ["off", { extensions: [".tsx"] }],
-
       // Custom rule configs from the 'typed-fp' plugin
       "@typescript-eslint/consistent-type-assertions": [
         "error",
