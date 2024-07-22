@@ -2,6 +2,7 @@ import js from "@eslint/js";
 import fn from "eslint-plugin-functional/flat";
 import ts from "typescript-eslint";
 import globals from "globals";
+import react from "@eslint-react/eslint-plugin";
 // TODO: react, nextjs
 
 export default ts.config(
@@ -9,20 +10,13 @@ export default ts.config(
   fn.configs.all,
   ...ts.configs.strictTypeChecked,
   {
-    files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
-    languageOptions: {
-      globals: {
-        ...globals.serviceworker,
-        ...globals.browser,
-      },
-    },
+    files: ["**/*.{ts,tsx}"],
+    ...react.configs["recommended-type-checked"],
   },
+  { files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"] },
   {
     languageOptions: {
-      parserOptions: {
-        project: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
+      parserOptions: { project: true, tsconfigRootDir: import.meta.dirname },
       globals: { ...globals.browser },
     },
     rules: {
