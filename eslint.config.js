@@ -3,7 +3,6 @@ import fn from "eslint-plugin-functional/flat";
 import ts from "typescript-eslint";
 import globals from "globals";
 import react from "@eslint-react/eslint-plugin";
-// TODO: react, nextjs
 
 export default ts.config(
   js.configs.all,
