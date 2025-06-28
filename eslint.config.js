@@ -1,5 +1,5 @@
 import js from "@eslint/js";
-import fn from "eslint-plugin-functional/flat";
+import fn from "eslint-plugin-functional";
 import ts from "typescript-eslint";
 import globals from "globals";
 import react from "@eslint-react/eslint-plugin";
