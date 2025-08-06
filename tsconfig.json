@@ -1,45 +1,53 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
+	"compilerOptions": {
+		"target": "ES2024",
+		"useDefineForClassFields": true,
+		"lib": ["ES2024", "DOM", "DOM.Iterable"],
+		"module": "ESNext",
+		"skipLibCheck": true,
 
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
+		/* Bundler mode */
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"moduleDetection": "force",
+		"noEmit": true,
+		"jsx": "react-jsx",
 
-    /* Linting */
-		"typeRoots": ["./node_modules/@types", "./types", "src/assets/"],
+		/* Linting */
+		"typeRoots": [
+			"./node_modules/@types",
+			"./types",
+			"src/assets/",
+			"./node_modules"
+		],
 
- /* https://github.com/tsconfig/bases/blob/main/bases/strictest.json */
-    "strict": true,
-    "allowUnusedLabels": false,
-    "allowUnreachableCode": false,
-    "exactOptionalPropertyTypes": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+		/* https://github.com/tsconfig/bases/blob/main/bases/strictest.json */
+		"strict": true,
+		"allowUnusedLabels": false,
+		"allowUnreachableCode": false,
+		"exactOptionalPropertyTypes": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noUncheckedIndexedAccess": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
 
-    // "isolatedModules": true,
+		"checkJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
 
-    "checkJs": true,
-
-    "esModuleInterop": true,
-    // "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"]
+		},
+		"types": ["vite/client"]
 	},
 
-		"allowJs": true,
-"include": ["./types/**/*.d.ts", "./**/*", "./assets/**/*"],
-"references": [{ "path": "./tsconfig.node.json" }]
+	"allowJs": true,
+	"include": ["./types/**/*.d.ts", "./src/**/*", "./assets/**/*"],
+	"references": [{ "path": "./tsconfig.node.json" }]
 }
