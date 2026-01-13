@@ -1,7 +1,6 @@
 {
 	"compilerOptions": {
 		"target": "ES2024",
-		"useDefineForClassFields": true,
 		"lib": ["ES2024", "DOM", "DOM.Iterable"],
 		"module": "ESNext",
 		"skipLibCheck": true,
@@ -11,22 +10,11 @@
 		"allowImportingTsExtensions": true,
 		"resolveJsonModule": true,
 		"isolatedModules": true,
-		"moduleDetection": "force",
 		"noEmit": true,
 		"jsx": "react-jsx",
 
-		/* Linting */
-		"typeRoots": [
-			"./node_modules/@types",
-			"./types",
-			"src/assets/",
-			"./node_modules"
-		],
-
-		/* https://github.com/tsconfig/bases/blob/main/bases/strictest.json */
+		/* Strict type checking - https://github.com/tsconfig/bases/blob/main/bases/strictest.json */
 		"strict": true,
-		"allowUnusedLabels": false,
-		"allowUnreachableCode": false,
 		"exactOptionalPropertyTypes": true,
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitOverride": true,
@@ -36,18 +24,23 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 
+		/* JavaScript support */
+		"allowJs": true,
 		"checkJs": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
 
+		/* Interop */
+		"esModuleInterop": true,
+
+		/* Path mapping */
 		"baseUrl": ".",
 		"paths": {
 			"@/*": ["./src/*"]
 		},
+
+		/* Type definitions */
 		"types": ["vite/client"]
 	},
 
-	"allowJs": true,
-	"include": ["./types/**/*.d.ts", "./src/**/*", "./assets/**/*"],
+	"include": ["./src/**/*"],
 	"references": [{ "path": "./tsconfig.node.json" }]
 }
