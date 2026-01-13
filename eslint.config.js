@@ -1,55 +1,41 @@
-import js from "@eslint/js";
-import fn from "eslint-plugin-functional";
-import ts from "typescript-eslint";
+// @ts-check
+
+import eslint from "@eslint/js";
+import functional from "eslint-plugin-functional";
+import tseslint from "typescript-eslint";
 import globals from "globals";
 import react from "@eslint-react/eslint-plugin";
 
-export default ts.config(
+export default tseslint.config(
   {
     ignores: [
-      "**/node_modules/**",
       "**/dist/**",
       "**/@/**",
       "**/components/ui/**",
       "**/lib/**",
-      "**/*.config.js",
-      "**/*.config.ts",
+      "**/*.config.{js,ts}",
       "**/*.d.ts",
       "**/tests/**",
     ],
   },
-  // Use recommended for JavaScript, strict for TypeScript and FP
-  js.configs.recommended,
-  fn.configs.recommended,
-  ...ts.configs.strict,
-  ...ts.configs.stylistic,
+
+  eslint.configs.recommended,
+
   {
     files: ["**/*.{ts,tsx}"],
-    ...react.configs["recommended-type-checked"],
-  },
-  {
-    files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
+    extends: [
+      tseslint.configs.strictTypeChecked,
+      tseslint.configs.stylisticTypeChecked,
+      functional.configs.lite,
+      react.configs["recommended-type-checked"],
+    ],
     languageOptions: {
-      parserOptions: { 
-        project: true, 
-        tsconfigRootDir: import.meta.dirname 
-      },
-      globals: { ...globals.browser },
+      parserOptions: { projectService: true },
+      globals: globals.browser,
     },
     rules: {
-      // Only essential overrides for your project needs
       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
-      "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
-      
-      // Disable functional programming rules that conflict with React patterns
-      "functional/no-expression-statements": "off",
-      "functional/no-conditional-statements": "off",
-      "functional/no-return-void": "off",
-      "functional/functional-parameters": "off",
-      "functional/prefer-immutable-types": "off",
-      "functional/immutable-data": "off",
-      
-      // React-specific overrides
+      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
       "@eslint-react/hooks-extra/no-direct-set-state-in-use-effect": "off",
     },
   },
